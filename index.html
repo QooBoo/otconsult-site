@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olesia Terenteva — Tech, Finance & Market Intelligence</title>
+<meta name="description" content="Consulting at the intersection of technology, finance and market intelligence. Belgrade-based, working with companies across Europe and the UAE.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='55 38 445 382'%3E%3Cpolygon points='272,48 128,300 410,300' fill='%23f06424'/%3E%3Cpath d='M95,248Q290,175 490,163Q300,196 95,248Z' fill='%23e8452a'/%3E%3Cpath d='M65,410Q260,225 490,166L470,410H340L272,322L205,410Z' fill='%23e5302b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080d; --bg-2:#101019; --card:rgba(255,255,255,.04); --stroke:rgba(255,255,255,.09);
+    --text:#f2f2f7; --dim:#9a9ab0;
+    --c1:#ff9a1f; --c2:#ff3d5a; --c3:#8b5cf6; --c4:#22d3ee;
+    --grad:linear-gradient(120deg,var(--c1),var(--c2) 45%,var(--c3));
+    --wrap:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+  h1,h2,h3{font-family:"Space Grotesk",Inter,Arial,sans-serif;line-height:1.08;margin:0 0 .5em;letter-spacing:-.02em}
+  h1{font-size:clamp(2.6rem,7vw,5.6rem);font-weight:700}
+  h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:600}
+  h3{font-size:1.3rem;font-weight:600}
+  p{margin:0 0 1em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding-inline:24px}
+  section{padding-block:120px;position:relative}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 6s linear infinite}
+  @keyframes shine{to{background-position:200% center}}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font:500 .78rem/1 "Space Grotesk",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:22px}
+  .kicker::before{content:"";width:28px;height:1px;background:var(--grad)}
+  .dim{color:var(--dim)}
+
+  /* Background */
+  .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 18s ease-in-out infinite alternate}
+  .b1{width:520px;height:520px;background:var(--c2);top:-160px;right:-120px}
+  .b2{width:460px;height:460px;background:var(--c3);bottom:-200px;left:-160px;animation-duration:22s}
+  .b3{width:320px;height:320px;background:var(--c1);top:40%;left:45%;opacity:.25;animation-duration:26s}
+  @keyframes float{to{transform:translate(-80px,60px) scale(1.15)}}
+  .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--stroke) 1px,transparent 1px),linear-gradient(90deg,var(--stroke) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);opacity:.5}
+  .cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,61,90,.12),transparent 65%);transform:translate(-50%,-50%);pointer-events:none;z-index:-1;transition:opacity .3s}
+
+  /* Header */
+  header{position:fixed;top:16px;left:0;right:0;z-index:20}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 18px;border:1px solid var(--stroke);border-radius:999px;background:rgba(12,12,20,.6);backdrop-filter:blur(16px)}
+  .brand{display:flex;align-items:center;gap:10px;font:600 1rem "Space Grotesk",sans-serif}
+  .brand svg{width:38px;height:34px;flex:none}
+  .brand span{line-height:1.2}
+  .brand small{display:block;font:500 .74rem Inter,sans-serif;color:var(--dim);letter-spacing:.02em;margin-top:2px}
+  .links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+  .links a{color:var(--dim);font-size:.95rem;transition:color .2s}
+  .links a:hover{color:var(--text)}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font:600 .95rem "Space Grotesk",sans-serif;border:0;cursor:pointer;position:relative;isolation:isolate;transition:transform .25s}
+  .pill-grad{background:var(--grad);color:#fff;box-shadow:0 10px 40px -10px rgba(255,61,90,.6)}
+  .pill-grad:hover{transform:translateY(-2px)}
+  .pill-line{border:1px solid var(--stroke);color:var(--text);background:var(--card)}
+  .pill-line:hover{border-color:rgba(255,255,255,.3)}
+  .pill .arrow{transition:transform .25s}
+  .pill:hover .arrow{transform:translateX(4px)}
+  .burger{display:none;background:none;border:0;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* Hero */
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:140px}
+  .hero h1 .line{display:block;overflow:hidden}
+  .hero h1 .line > span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+  .hero h1 .line:nth-child(2) > span{animation-delay:.12s}
+  .hero h1 .line:nth-child(3) > span{animation-delay:.24s}
+  @keyframes rise{to{transform:none}}
+  .rotator{display:inline-grid;vertical-align:bottom}
+  .rotator span{grid-area:1/1;opacity:0;transform:translateY(40%);transition:.6s cubic-bezier(.2,.8,.2,1)}
+  .rotator span.on{opacity:1;transform:none}
+  .rotator span.off{opacity:0;transform:translateY(-40%)}
+  .hero-sub{font-size:1.2rem;color:var(--dim);max-width:600px;margin:28px 0 40px;opacity:0;animation:fade 1s .5s forwards}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:fade 1s .7s forwards}
+  @keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .scroll-hint{margin-top:80px;display:flex;align-items:center;gap:12px;color:var(--dim);font-size:.85rem;opacity:0;animation:fade 1s 1s forwards}
+  .mouse{width:22px;height:34px;border:1.5px solid var(--dim);border-radius:12px;position:relative}
+  .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--text);transform:translateX(-50%);animation:wheel 1.8s infinite}
+  @keyframes wheel{to{transform:translate(-50%,10px);opacity:0}}
+
+  /* Marquee */
+  .marquee{border-block:1px solid var(--stroke);padding-block:26px;overflow:hidden;background:rgba(255,255,255,.015)}
+  .track{display:flex;gap:56px;width:max-content;animation:scroll 38s linear infinite}
+  .track span{font:500 1.35rem "Space Grotesk",sans-serif;color:var(--dim);white-space:nowrap;display:flex;align-items:center;gap:56px}
+  .track span::after{content:"✦";color:var(--c2);font-size:.9rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* Bento */
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+  .tile{grid-column:span 2;position:relative;border:1px solid var(--stroke);border-radius:24px;padding:34px;background:var(--card);overflow:hidden;transition:transform .35s,border-color .35s}
+  .tile:hover{border-color:rgba(255,255,255,.22)}
+  .tile::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(255,61,90,.14),transparent 45%);opacity:0;transition:opacity .3s}
+  .tile:hover::before{opacity:1}
+  .tile.wide{grid-column:span 3}
+  .tile .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--grad);margin-bottom:26px;box-shadow:0 8px 30px -8px rgba(255,61,90,.55)}
+  .tile p{color:var(--dim)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{font-size:.82rem;padding:6px 12px;border-radius:999px;border:1px solid var(--stroke);color:var(--text);background:rgba(255,255,255,.03)}
+  .tile .big{font:700 3rem/1 "Space Grotesk",sans-serif;margin-bottom:10px}
+
+  /* Timeline */
+  .timeline{position:relative;max-width:820px;margin-top:60px}
+  .timeline::before{content:"";position:absolute;left:23px;top:0;bottom:0;width:2px;background:var(--stroke)}
+  .timeline .fill{position:absolute;left:23px;top:0;width:2px;height:var(--p,0%);background:var(--grad);transition:height .15s linear}
+  .t-step{position:relative;padding:0 0 56px 84px}
+  .t-step:last-child{padding-bottom:0}
+  .t-step .dot{position:absolute;left:0;top:0;width:48px;height:48px;border-radius:50%;background:var(--bg-2);border:1px solid var(--stroke);display:grid;place-items:center;font:600 .9rem "Space Grotesk",sans-serif;transition:.4s}
+  .t-step.active .dot{background:var(--grad);border-color:transparent;box-shadow:0 0 0 6px rgba(255,61,90,.12)}
+  .t-step p{color:var(--dim);max-width:560px}
+
+  /* Values */
+  .values{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .value{padding:30px;border-radius:22px;border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.04),transparent)}
+  .value .n{font:600 .85rem "Space Grotesk",sans-serif;color:var(--c1);letter-spacing:.1em}
+  .value p{color:var(--dim);margin:0}
+
+  /* FAQ */
+  .faq{max-width:860px}
+  .q{border-bottom:1px solid var(--stroke)}
+  .q button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;padding:26px 0;font:500 1.2rem "Space Grotesk",sans-serif}
+  .q button:focus-visible{outline:2px solid var(--c2);outline-offset:4px}
+  .q .plus{width:34px;height:34px;flex:none;border-radius:50%;border:1px solid var(--stroke);display:grid;place-items:center;transition:transform .35s,background .35s}
+  .q.open .plus{transform:rotate(45deg);background:var(--grad);border-color:transparent}
+  .q .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+  .q.open .a{grid-template-rows:1fr}
+  .q .a > div{overflow:hidden}
+  .q .a p{color:var(--dim);padding-bottom:26px;margin:0;max-width:720px}
+
+  /* CTA */
+  .cta{border-radius:36px;padding:clamp(40px,7vw,90px);position:relative;overflow:hidden;border:1px solid var(--stroke);background:radial-gradient(circle at 15% 20%,rgba(255,154,31,.25),transparent 45%),radial-gradient(circle at 85% 80%,rgba(139,92,246,.3),transparent 50%),var(--bg-2)}
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .contact-lines{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:14px}
+  .contact-lines li{display:flex;gap:14px;align-items:baseline}
+  .contact-lines small{color:var(--dim);min-width:84px;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em}
+  .todo{background:rgba(255,200,0,.18);color:#ffd45c;padding:1px 8px;border-radius:6px}
+  form{display:grid;gap:14px}
+  .field{position:relative}
+  .field input,.field textarea,.field select{width:100%;font:inherit;color:var(--text);background:rgba(0,0,0,.35);border:1px solid var(--stroke);border-radius:14px;padding:22px 16px 10px;transition:border-color .25s}
+  .field select{padding:14px 16px}
+  .field select option{background:var(--bg-2)}
+  .field textarea{min-height:130px;resize:vertical}
+  .field label{position:absolute;left:17px;top:16px;color:var(--dim);font-size:.95rem;pointer-events:none;transition:.2s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--c2)}
+  .field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label{top:7px;font-size:.72rem;letter-spacing:.06em;color:var(--c1)}
+
+  /* Footer */
+  footer{padding-block:70px 40px;border-top:1px solid var(--stroke);margin-top:120px;color:var(--dim);font-size:.92rem}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font:600 .78rem "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--text);margin:0 0 16px}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+  footer a:hover{color:var(--text)}
+  .legal dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-top:10px}
+  .legal dd{margin:0;color:var(--text)}
+  .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid var(--stroke)}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+  @media (max-width:980px){
+    .bento{grid-template-columns:1fr 1fr}
+    .tile,.tile.wide{grid-column:span 1}
+    .values{grid-template-columns:1fr 1fr}
+    .cta-grid,.foot{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    .links{display:none;position:absolute;top:70px;left:24px;right:24px;flex-direction:column;gap:18px;padding:24px;border:1px solid var(--stroke);border-radius:24px;background:rgba(12,12,20,.95)}
+    .links.open{display:flex}
+    .burger{display:block}
+    .rotator{display:grid}
+    h1{font-size:clamp(2.2rem,10vw,3rem)}
+    .bar .pill{display:none}
+    .bento,.values{grid-template-columns:1fr}
+    section{padding-block:80px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal,.hero h1 .line > span,.hero-sub,.hero-cta,.scroll-hint{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg-up" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7941d"/><stop offset="1" stop-color="#f06424"/></linearGradient>
+    <linearGradient id="lg-blade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f07a22"/><stop offset=".45" stop-color="#e8452a"/><stop offset="1" stop-color="#c4222a"/></linearGradient>
+    <linearGradient id="lg-low" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f26a27"/><stop offset=".6" stop-color="#ea3f2b"/><stop offset="1" stop-color="#e5302b"/></linearGradient>
+    <clipPath id="cp-up"><path d="M0,0H540V163H490Q290,175 95,248H0Z"/></clipPath>
+    <clipPath id="cp-curve"><path d="M65,410Q260,225 490,166V410Z"/></clipPath>
+    <clipPath id="cp-low"><polygon points="272,48 470,410 340,410 272,322 205,410 0,410 0,48"/></clipPath>
+  </defs>
+  <symbol id="ot-logo" viewBox="55 38 445 382">
+    <g clip-path="url(#cp-up)">
+      <polygon points="272,48 128,300 272,300" fill="url(#lg-up)"/>
+      <polygon points="272,48 272,300 410,300" fill="#b01f28"/>
+    </g>
+    <path d="M95,248Q290,175 490,163Q300,196 95,248Z" fill="url(#lg-blade)"/>
+    <g clip-path="url(#cp-low)">
+      <path d="M65,410Q260,225 490,166V410Z" fill="url(#lg-low)"/>
+      <path d="M272,0H540V410H272Z" fill="#d6252b" opacity=".55" clip-path="url(#cp-curve)"/>
+    </g>
+  </symbol>
+</svg>
+<div class="bg"><div class="grid-bg"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="cursor-glow" id="glow"></div>
+
+<header>
+  <div class="wrap">
+    <div class="bar">
+      <a href="#top" class="brand"><svg aria-hidden="true"><use href="#ot-logo"/></svg><span>Olesia Terenteva PR<small>Consulting · Belgrade</small></span></a>
+      <ul class="links" id="links">
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#principles">Principles</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#contact" class="pill pill-grad">Start a project <span class="arrow">→</span></a>
+      <button class="burger" aria-label="Menu" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="kicker">Consulting studio · Belgrade</span>
+      <h1>
+        <span class="line"><span>Turn complexity</span></span>
+        <span class="line"><span>into <span class="rotator" id="rot"><span class="grad-text on">clear strategy.</span><span class="grad-text">smart systems.</span><span class="grad-text">solid numbers.</span><span class="grad-text">market insight.</span></span></span></span>
+      </h1>
+      <p class="hero-sub">I help ambitious companies make better decisions at the point where technology, money and markets meet, from choosing the right software to entering a new market.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="pill pill-grad">Book a discovery call <span class="arrow">→</span></a>
+        <a href="#expertise" class="pill pill-line">See what I do</a>
+      </div>
+      <div class="scroll-hint"><span class="mouse"></span>Scroll to explore</div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>IT Strategy</span><span>Financial Modelling</span><span>Market Research</span><span>Automation</span><span>Cash-flow Planning</span><span>Competitor Intelligence</span><span>Digital Transformation</span><span>Feasibility Studies</span>
+      <span>IT Strategy</span><span>Financial Modelling</span><span>Market Research</span><span>Automation</span><span>Cash-flow Planning</span><span>Competitor Intelligence</span><span>Digital Transformation</span><span>Feasibility Studies</span>
+    </div>
+  </div>
+
+  <!-- EXPERTISE / BENTO -->
+  <section id="expertise">
+    <div class="wrap">
+      <span class="kicker reveal">Expertise</span>
+      <h2 class="reveal d1">One consultant.<br><span class="grad-text">Three lenses</span> on your business.</h2>
+      <p class="dim reveal d2" style="max-width:620px;font-size:1.1rem;margin-bottom:56px">Most problems are not purely technical, purely financial or purely about marketing. That's why I look at all three.</p>
+
+      <div class="bento">
+        <article class="tile wide reveal">
+          <div class="ico"><svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Tech &amp; IT Advisory</h3>
+          <p>An independent view on your systems. I help you find the tools you actually need, automate routine work and cut IT costs that don't pay off.</p>
+          <div class="chips"><span>IT audit</span><span>Software selection</span><span>Automation</span><span>Digital roadmap</span><span>Project oversight</span></div>
+        </article>
+        <article class="tile wide reveal d1">
+          <div class="ico"><svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+          <h3>Finance &amp; Planning</h3>
+          <p>Numbers you can steer by. Models, budgets and reports that show where you are, where you're heading and what it will take to get there.</p>
+          <div class="chips"><span>Financial models</span><span>Business plans</span><span>Cash-flow</span><span>KPI dashboards</span><span>Investment cases</span></div>
+        </article>
+        <article class="tile wide reveal">
+          <div class="ico"><svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+          <h3>Market Intelligence</h3>
+          <p>Market sizing, competitor mapping, pricing and customer segments. Research you can act on, not just file away.</p>
+        </article>
+        <article class="tile wide reveal d1">
+          <div class="big grad-text">3-in-1</div>
+          <h3>Combined projects</h3>
+          <p>Launching a product or a new branch? Get market, finance and IT covered in one plan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD / TIMELINE -->
+  <section id="method">
+    <div class="wrap">
+      <span class="kicker reveal">Method</span>
+      <h2 class="reveal d1">From first call<br>to <span class="grad-text">measurable result</span></h2>
+      <div class="timeline" id="timeline">
+        <div class="fill" id="tfill"></div>
+        <div class="t-step reveal"><div class="dot">01</div><h3>Discovery</h3><p>A free 30-minute call. We define the problem, the goal and whether I'm the right fit.</p></div>
+        <div class="t-step reveal"><div class="dot">02</div><h3>Scope &amp; offer</h3><p>A short written proposal: deliverables, timeline and a fixed price. No surprises later.</p></div>
+        <div class="t-step reveal"><div class="dot">03</div><h3>Deep dive</h3><p>Data, interviews, research and modelling. You get short progress updates along the way.</p></div>
+        <div class="t-step reveal"><div class="dot">04</div><h3>Decision pack</h3><p>Clear findings, options with their trade-offs, and a prioritised action plan.</p></div>
+        <div class="t-step reveal"><div class="dot">05</div><h3>Follow-through</h3><p>Optional support while you implement, so the plan actually gets done.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section id="principles">
+    <div class="wrap">
+      <span class="kicker reveal">Principles</span>
+      <h2 class="reveal d1" style="margin-bottom:56px">How I work</h2>
+      <div class="values">
+        <div class="value reveal"><div class="n">/ 01</div><h3>Clarity first</h3><p>Plain language, no jargon. If it can't be explained simply, it isn't ready.</p></div>
+        <div class="value reveal d1"><div class="n">/ 02</div><h3>Evidence-based</h3><p>Recommendations rest on data and research, not on gut feeling.</p></div>
+        <div class="value reveal d2"><div class="n">/ 03</div><h3>Independent</h3><p>No vendor commissions. Advice is based only on what's best for you.</p></div>
+        <div class="value reveal d3"><div class="n">/ 04</div><h3>Confidential</h3><p>Your data stays yours. NDA available before we start.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <span class="kicker reveal">FAQ</span>
+      <h2 class="reveal d1">Good questions</h2>
+      <div class="faq">
+        <div class="q reveal"><button aria-expanded="false">Do you only work with Serbian companies?<span class="plus">+</span></button><div class="a"><div><p>No. I work remotely with clients across Europe, the UK and the UAE, and invoice in EUR or USD. On-site work in Belgrade and the region is also possible.</p></div></div></div>
+        <div class="q reveal"><button aria-expanded="false">What does a project cost?<span class="plus">+</span></button><div class="a"><div><p>It depends on the scope. After the discovery call you get a fixed-price proposal, so you know the full cost up front.</p></div></div></div>
+        <div class="q reveal"><button aria-expanded="false">How fast can you start?<span class="plus">+</span></button><div class="a"><div><p>Usually within one to two weeks of agreeing the scope. Smaller analyses can often begin sooner.</p></div></div></div>
+        <div class="q reveal"><button aria-expanded="false">Can I hire you for just one area, like IT?<span class="plus">+</span></button><div class="a"><div><p>Of course. Each area works on its own. Combining them is an option, not a requirement.</p></div></div></div>
+        <div class="q reveal"><button aria-expanded="false">Will you sign an NDA?<span class="plus">+</span></button><div class="a"><div><p>Yes. Confidentiality is standard, and I'm happy to sign your NDA before we exchange any sensitive information.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div class="cta-grid">
+          <div>
+            <span class="kicker">Contact</span>
+            <h2>Have a challenge?<br><span class="grad-text">Let's solve it.</span></h2>
+            <p class="dim" style="font-size:1.1rem">Send a few lines about your project. You'll get a reply within one business day.</p>
+            <ul class="contact-lines">
+              <li><small>Email</small><span class="todo">email@example.com</span></li>
+              <li><small>Phone</small><span class="todo">+381 00 000 0000</span></li>
+              <li><small>Office</small><span>231 Juria Gagarina, Novi Beograd, 11073, Serbia</span></li>
+            </ul>
+          </div>
+          <form id="form">
+            <div class="field"><input id="f-name" name="name" placeholder=" " required><label for="f-name">Your name</label></div>
+            <div class="field"><input id="f-email" name="email" type="email" placeholder=" " required><label for="f-email">Email</label></div>
+            <div class="field"><input id="f-company" name="company" placeholder=" "><label for="f-company">Company (optional)</label></div>
+            <div class="field"><select name="topic" aria-label="Topic"><option>Tech &amp; IT advisory</option><option>Finance &amp; planning</option><option>Market intelligence</option><option>Combined project</option></select></div>
+            <div class="field"><textarea id="f-msg" name="message" placeholder=" " required></textarea><label for="f-msg">Tell me about your project</label></div>
+            <button class="pill pill-grad" type="submit" style="justify-self:start">Send message <span class="arrow">→</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="brand"><svg aria-hidden="true" style="width:34px;height:30px"><use href="#ot-logo"/></svg><span>Olesia Terenteva PR<small>Consulting · Belgrade</small></span></a>
+        <p style="margin-top:16px;max-width:340px">Consulting in technology, finance and market intelligence. Based in Belgrade, working worldwide.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul><li><a href="#expertise">Expertise</a></li><li><a href="#method">Method</a></li><li><a href="#principles">Principles</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <dl class="legal">
+          <dd>Olesia Terenteva PR. Beograd</dd>
+          <dt>Address</dt><dd>231 Juria Gagarina, Novi Beograd, 11073, Serbia</dd>
+          <dt>Tax ID (PIB)</dt><dd>114619966</dd>
+          <dt>Registration No. (MB)</dt><dd>67720539</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="bottom"><span>© <span id="y">2026</span> Olesia Terenteva PR. Beograd</span><span>Belgrade · Serbia</span></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const links = document.getElementById('links');
+  document.getElementById('burger').onclick = () => links.classList.toggle('open');
+  links.querySelectorAll('a').forEach(a => a.onclick = () => links.classList.remove('open'));
+
+  // Scroll reveal
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Rotating words
+  const words = [...document.querySelectorAll('#rot span')];
+  let i = 0;
+  if (!reduce) setInterval(() => {
+    words[i].classList.replace('on', 'off');
+    const prev = words[i];
+    setTimeout(() => prev.classList.remove('off'), 600);
+    i = (i + 1) % words.length;
+    words[i].classList.add('on');
+  }, 2600);
+
+  // Cursor glow + tile spotlight
+  const glow = document.getElementById('glow');
+  addEventListener('pointermove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+  document.querySelectorAll('.tile').forEach(t => {
+    t.addEventListener('pointermove', e => {
+      const r = t.getBoundingClientRect();
+      t.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      t.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      if (!reduce) {
+        const rx = ((e.clientY - r.top) / r.height - .5) * -6, ry = ((e.clientX - r.left) / r.width - .5) * 6;
+        t.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      }
+    });
+    t.addEventListener('pointerleave', () => t.style.transform = '');
+  });
+
+  // Timeline progress
+  const tl = document.getElementById('timeline'), fill = document.getElementById('tfill');
+  const steps = [...tl.querySelectorAll('.t-step')];
+  const onScroll = () => {
+    const r = tl.getBoundingClientRect(), mid = innerHeight * .6;
+    const p = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+    fill.style.setProperty('--p', (p * 100) + '%');
+    steps.forEach(s => s.classList.toggle('active', s.getBoundingClientRect().top < mid));
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // FAQ accordion
+  document.querySelectorAll('.q button').forEach(b => b.onclick = () => {
+    const q = b.parentElement, open = q.classList.toggle('open');
+    b.setAttribute('aria-expanded', open);
+  });
+
+  // Form -> email
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const to = 'email@example.com'; // TODO: replace with the real email
+    const subject = `Project inquiry: ${f.get('topic')} (${f.get('name')})`;
+    const body = `Name: ${f.get('name')}\nEmail: ${f.get('email')}\nCompany: ${f.get('company')}\nTopic: ${f.get('topic')}\n\n${f.get('message')}`;
+    location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();
+</script>
+</body>
+</html>
