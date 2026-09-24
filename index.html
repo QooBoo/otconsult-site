@@ -340,7 +340,7 @@
             <h2>Have a challenge?<br><span class="grad-text">Let's solve it.</span></h2>
             <p class="dim" style="font-size:1.1rem">Send a few lines about your project. You'll get a reply within one business day.</p>
             <ul class="contact-lines">
-              <li><small>Email</small><span class="todo">email@example.com</span></li>
+              <li><small>Email</small><a href="mailto:hi@otconsult.rs">hi@otconsult.rs</a></li>
               <li><small>Office</small><span>231 Juria Gagarina, Novi Beograd, 11073, Serbia</span></li>
             </ul>
           </div>
@@ -447,7 +447,7 @@
   document.getElementById('form').addEventListener('submit', e => {
     e.preventDefault();
     const f = new FormData(e.target);
-    const to = 'email@example.com'; // TODO: replace with the real email
+    const to = 'hi@otconsult.rs';
     const subject = `Project inquiry: ${f.get('topic')} (${f.get('name')})`;
     const body = `Name: ${f.get('name')}\nEmail: ${f.get('email')}\nCompany: ${f.get('company')}\nTopic: ${f.get('topic')}\n\n${f.get('message')}`;
     location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
